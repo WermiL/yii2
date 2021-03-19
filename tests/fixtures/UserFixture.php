@@ -2,7 +2,7 @@
 namespace tests\fixtures;
 
 
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use yii\test\ActiveFixture;
 
 

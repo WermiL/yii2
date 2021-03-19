@@ -2,8 +2,7 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\modules\user\models\query\UserQuery;
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use Yii;
 use yii\base\Model;
 
@@ -41,7 +40,7 @@ class PasswordResetRequestForm extends Model
      */
     public function sendEmail()
     {
-        $user = UserQuery::findOne([
+        $user = User::findOne([
             'status' => User::STATUS_ACTIVE,
             'email' => $this->email,
         ]);

@@ -3,7 +3,7 @@ namespace tests\unit\models;
 
 use tests\fixtures\UserFixture;
 use frontend\modules\user\models\forms\SignupForm;
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use yii\mail\MessageInterface;
 
 class SignupFormTest extends \Codeception\Test\Unit

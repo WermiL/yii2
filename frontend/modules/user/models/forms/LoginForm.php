@@ -2,7 +2,7 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\modules\user\models\query\UserQuery;
+use frontend\modules\user\models\records\user\User;
 use Yii;
 use yii\base\Model;
 
@@ -12,7 +12,7 @@ use yii\base\Model;
  * @property string $email
  * @property string $password
  * @property bool $rememberMe
- * @property UserQuery|null $_user
+ * @property User|null $_user
  */
 class LoginForm extends Model
 {
@@ -33,7 +33,7 @@ class LoginForm extends Model
 
             ['rememberMe', 'boolean'],
 
-            ['password', 'validatePassword'],
+            ['password', 'validateFormPassword'],
         ];
     }
 
@@ -44,7 +44,7 @@ class LoginForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword($attribute, $params)
+    public function validateFormPassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
@@ -71,12 +71,12 @@ class LoginForm extends Model
     /**
      * Finds user by [[email]]
      *
-     * @return UserQuery|null
+     * @return User|null
      */
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = UserQuery::findByEmail($this->email);
+            $this->_user = User::findByEmail($this->email);
         }
 
         return $this->_user;

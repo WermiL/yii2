@@ -2,7 +2,7 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use Yii;
 use yii\base\Model;
 

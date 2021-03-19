@@ -1,13 +1,11 @@
 <?php
 
-namespace frontend\modules\user\models\query;
-
-use frontend\modules\user\models\records\User;
+namespace frontend\modules\user\models\records\user;
 
 /**
- * User query
+ * User Query
  */
-class UserQuery extends User
+class UserQuery extends UserValidate
 {
     /**
      * Finds user by email

@@ -2,14 +2,14 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\modules\user\models\query\UserQuery;
+use frontend\modules\user\models\records\user\User;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
 
 /**
  * Password reset form
  *
- * @property UserQuery|null $_user
+ * @property User|null $_user
  * @property string|null $password
  */
 class ResetPasswordForm extends Model
@@ -30,7 +30,7 @@ class ResetPasswordForm extends Model
         if (empty($token) || !is_string($token)) {
             throw new InvalidArgumentException('Password reset token cannot be blank.');
         }
-        $this->_user = UserQuery::findByPasswordResetToken($token);
+        $this->_user = User::findByPasswordResetToken($token);
         if (!$this->_user) {
             throw new InvalidArgumentException('Wrong password reset token.');
         }

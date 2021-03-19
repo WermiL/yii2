@@ -4,7 +4,7 @@ namespace tests\unit\models;
 
 use tests\fixtures\UserFixture;
 use frontend\modules\user\models\forms\VerifyEmailForm;
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use yii\base\InvalidArgumentException;
 
 class VerifyEmailFormTest extends \Codeception\Test\Unit

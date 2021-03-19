@@ -2,15 +2,14 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\modules\user\models\query\UserQuery;
-use frontend\modules\user\models\records\User;
+use frontend\modules\user\models\records\user\User;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
 /**
  * Verify Email Form
  *
  * @property string|null $token
- * @property UserQuery|null $_user
+ * @property User|null $_user
  */
 class VerifyEmailForm extends Model
 {
@@ -30,7 +29,7 @@ class VerifyEmailForm extends Model
         if (empty($token) || !is_string($token)) {
             throw new InvalidArgumentException('Verify email token cannot be blank.');
         }
-        $this->_user = UserQuery::findByVerificationToken($token);
+        $this->_user = User::findByVerificationToken($token);
         if (!$this->_user) {
             throw new InvalidArgumentException('Wrong verify email token.');
         }
@@ -40,7 +39,7 @@ class VerifyEmailForm extends Model
     /**
      * Verify email
      *
-     * @return UserQuery|null the saved model or null if saving fails
+     * @return User|null the saved model or null if saving fails
      */
     public function verifyEmail()
     {
