@@ -1,6 +1,7 @@
 html,
 body {
-    height: 100%;
+    min-height: 100vh !important;
+    position: relative;
 }
 
 .wrap {
@@ -101,9 +102,9 @@ a.desc:after {
     border: none;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
@@ -117,4 +118,20 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+#particles-js {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.header {
+    z-index: 77;
+}
+
+.footer {
+    z-index: 77;
 }

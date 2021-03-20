@@ -6,8 +6,8 @@
 
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
@@ -24,38 +24,40 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="d-flex flex-column">
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<header class="header">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-top',
+            'class' => 'navbar navbar-expand-md navbar-dark bg-dark',
         ],
     ]);
     $menuItems = [];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
+        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
+        $menuItems[] = '<li class="nav-item">'
+            . Html::beginForm(['/user/login/logout'], 'post')
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->email . ')',
-                ['class' => 'btn btn-link logout']
+                ['class' => 'btn btn-outline-secondary text-light nav-link']
             )
             . Html::endForm()
             . '</li>';
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav ml-auto'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
+</header>
+<main class="main ">
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -64,16 +66,14 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</div>
-
-<footer class="footer">
+</main>
+<footer class="footer mt-auto">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Html::a('Contact', ['/site/contact']) ?></p>
+        <p class="float-left text-muted">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+        <?= Html::a('Contact', ['/site/contact'], ['class' => 'float-right']) ?>
     </div>
 </footer>
-
+<div id="particles-js"></div>
 <?php $this->endBody() ?>
 </body>
 </html>
