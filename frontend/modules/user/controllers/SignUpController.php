@@ -2,10 +2,10 @@
 
 namespace frontend\modules\user\controllers;
 
+use frontend\layouts\controller\LayoutController;
 use frontend\modules\user\models\forms\ResendVerificationEmailForm;
 use frontend\modules\user\models\forms\SignUpForm;
 use frontend\modules\user\models\forms\VerifyEmailForm;
-use frontend\routing\controllers\FrontendController;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\captcha\CaptchaAction;
@@ -15,7 +15,7 @@ use yii\web\ErrorAction;
 /**
  * Site controller
  */
-class SignUpController extends FrontendController
+class SignUpController extends LayoutController
 {
     /**
      * {@inheritdoc}

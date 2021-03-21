@@ -2,8 +2,8 @@
 
 namespace frontend\controllers;
 
+use frontend\layouts\controller\LayoutController;
 use frontend\models\forms\ContactForm;
-use frontend\routing\controllers\FrontendController;
 use Yii;
 use yii\captcha\CaptchaAction;
 use yii\web\ErrorAction;
@@ -11,7 +11,7 @@ use yii\web\ErrorAction;
 /**
  * Site controller
  */
-class SiteController extends FrontendController
+class SiteController extends LayoutController
 {
     /**
      * {@inheritdoc}

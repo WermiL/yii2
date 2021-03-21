@@ -2,6 +2,7 @@
 
 namespace frontend\modules\user\controllers;
 
+use frontend\layouts\controller\LayoutController;
 use frontend\routing\controllers\BackendController;
 use Yii;
 use frontend\modules\user\models\records\user\User;
@@ -12,8 +13,13 @@ use yii\filters\VerbFilter;
 /**
  * AdministrationController implements the CRUD actions for User model.
  */
-class AdministrationController extends BackendController
+class AdministrationController extends LayoutController
 {
+    /**
+     * {@inheritdoc}
+     */
+    public $layout = self::LAYOUT_ADMIN_PANEL;
+
     /**
      * {@inheritdoc}
      */

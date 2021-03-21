@@ -2,10 +2,10 @@
 
 namespace frontend\modules\user\controllers;
 
-use frontend\modules\user\models\forms\SignInForm;
+use frontend\layouts\controller\LayoutController;
 use frontend\modules\user\models\forms\PasswordResetRequestForm;
 use frontend\modules\user\models\forms\ResetPasswordForm;
-use frontend\routing\controllers\FrontendController;
+use frontend\modules\user\models\forms\SignInForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\captcha\CaptchaAction;
@@ -16,7 +16,7 @@ use yii\web\ErrorAction;
 /**
  * Site controller
  */
-class SignInController extends FrontendController
+class SignInController extends LayoutController
 {
     public function behaviors()
     {

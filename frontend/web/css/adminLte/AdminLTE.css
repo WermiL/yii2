@@ -251,11 +251,7 @@ a:focus {
   float: left;
   background-color: transparent;
   background-image: none;
-  padding: 15px 15px;
-  font-family: fontAwesome;
-}
-.main-header .sidebar-toggle:before {
-  content: "\f0c9";
+  padding: 17px 17px;
 }
 .main-header .sidebar-toggle:hover {
   color: #fff;
@@ -263,13 +259,6 @@ a:focus {
 .main-header .sidebar-toggle:focus,
 .main-header .sidebar-toggle:active {
   background: transparent;
-}
-.main-header .sidebar-toggle.fa5 {
-  font-family: "Font Awesome\ 5 Free";
-}
-.main-header .sidebar-toggle.fa5:before {
-  content: "\f0c9";
-  font-weight: 900;
 }
 .main-header .sidebar-toggle .icon-bar {
   display: none;

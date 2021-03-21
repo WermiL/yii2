@@ -12,7 +12,8 @@ class AdminLteAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/AdminLTE.css',
+        'css/adminLte/AdminLTE.css',
+        'css/adminLte/skin-green.css',
     ];
     public $js = [
         'js/adminlte.js',
