@@ -17,7 +17,6 @@ class SignupCest
 
     public function signupWithEmptyFields(FunctionalTester $I)
     {
-        $I->see('Sign up', 'h1');
         $I->see('Please fill out the following fields to sign up:');
         $I->submitForm($this->formId, []);
         $I->seeValidationError('Email cannot be blank.');
