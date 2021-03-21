@@ -2,7 +2,7 @@
 
 namespace frontend\modules\user\controllers;
 
-use frontend\modules\user\models\forms\LoginForm;
+use frontend\modules\user\models\forms\SignInForm;
 use frontend\modules\user\models\forms\PasswordResetRequestForm;
 use frontend\modules\user\models\forms\ResetPasswordForm;
 use Yii;
@@ -16,7 +16,7 @@ use yii\web\ErrorAction;
 /**
  * Site controller
  */
-class LoginController extends Controller
+class SignInController extends Controller
 {
     public function behaviors()
     {
@@ -24,7 +24,7 @@ class LoginController extends Controller
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'logout' => ['post'],
+                    'sign-out' => ['post'],
                 ],
             ],
         ];
@@ -57,13 +57,13 @@ class LoginController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new SignInForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
         } else {
             $model->password = '';
 
-            return $this->render('login', [
+            return $this->render('signIn', [
                 'model' => $model,
             ]);
         }
@@ -74,7 +74,7 @@ class LoginController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
+    public function actionSignOut()
     {
         Yii::$app->user->logout();
 

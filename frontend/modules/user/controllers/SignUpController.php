@@ -3,7 +3,7 @@
 namespace frontend\modules\user\controllers;
 
 use frontend\modules\user\models\forms\ResendVerificationEmailForm;
-use frontend\modules\user\models\forms\SignupForm;
+use frontend\modules\user\models\forms\SignUpForm;
 use frontend\modules\user\models\forms\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -15,7 +15,7 @@ use yii\web\ErrorAction;
 /**
  * Site controller
  */
-class SignupController extends Controller
+class SignUpController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -40,13 +40,13 @@ class SignupController extends Controller
      */
     public function actionIndex()
     {
-        $model = new SignupForm();
+        $model = new SignUpForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->goHome();
         }
 
-        return $this->render('signup', [
+        return $this->render('signUp', [
             'model' => $model,
         ]);
     }

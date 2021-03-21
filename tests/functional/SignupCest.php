@@ -7,18 +7,18 @@ use frontend\modules\user\models\records\user\User;
 
 class SignupCest
 {
-    protected $formId = '#form-signup';
+    protected $formId = '#sign-up-form';
 
 
     public function _before(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup');
+        $I->amOnRoute('user/sign-up');
     }
 
     public function signupWithEmptyFields(FunctionalTester $I)
     {
-        $I->see('Signup', 'h1');
-        $I->see('Please fill out the following fields to signup:');
+        $I->see('Sign up', 'h1');
+        $I->see('Please fill out the following fields to sign up:');
         $I->submitForm($this->formId, []);
         $I->seeValidationError('Email cannot be blank.');
         $I->seeValidationError('Password cannot be blank.');
@@ -29,20 +29,20 @@ class SignupCest
     {
         $I->submitForm(
             $this->formId, [
-            'SignupForm[email]'     => 'tttt',
-            'SignupForm[password]'  => 'tester_password',
+            'SignUpForm[email]'     => 'tttt',
+            'SignUpForm[password]'  => 'tester_password',
         ]
         );
-        $I->dontSee('Email cannot be blank.', '.help-block');
-        $I->dontSee('Password cannot be blank.', '.help-block');
-        $I->see('Email is not a valid email address.', '.help-block');
+        $I->dontSee('Email cannot be blank.', '.invalid-feedback');
+        $I->dontSee('Password cannot be blank.', '.invalid-feedback');
+        $I->see('Email is not a valid email address.', '.invalid-feedback');
     }
 
     public function signupSuccessfully(FunctionalTester $I)
     {
         $I->submitForm($this->formId, [
-            'SignupForm[email]' => 'testers.email@example.com',
-            'SignupForm[password]' => 'tester_password',
+            'SignUpForm[email]' => 'testers.email@example.com',
+            'SignUpForm[password]' => 'tester_password',
         ]);
 
         $I->seeRecord(User::class, [

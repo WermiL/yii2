@@ -7,6 +7,18 @@ use yii\web\IdentityInterface;
 
 /**
  * This is the model User Identity.
+ * @property int $id
+ * @property string $email
+ * @property string $nickname
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $auth_key
+ * @property string|null $verification_token
+ * @property string $password_hash
+ * @property string|null $password_reset_token
+ * @property int $status
+ * @property int $created_at
+ * @property int $updated_at
  */
 class UserIdentity extends UserQuery implements IdentityInterface
 {

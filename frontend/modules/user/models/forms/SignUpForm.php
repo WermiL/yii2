@@ -16,7 +16,7 @@ use yii\base\Model;
  * @property string|null $first_name
  * @property string|null $last_name
  */
-class SignupForm extends Model
+class SignUpForm extends Model
 {
 
     public  $email;

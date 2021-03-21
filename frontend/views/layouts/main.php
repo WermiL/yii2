@@ -9,7 +9,6 @@ use frontend\widgets\Alert;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -38,13 +37,13 @@ AppAsset::register($this);
     ]);
     $menuItems = [];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
+        $menuItems[] = ['label' => 'Sign in', 'url' => ['/user/sign-in'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
+        $menuItems[] = ['label' => 'Sign up', 'url' => ['/user/sign-up'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
     } else {
         $menuItems[] = '<li class="nav-item">'
-            . Html::beginForm(['/user/login/logout'], 'post')
+            . Html::beginForm(['/user/sign-in/sign-out'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->email . ')',
+                'Sign out (' . Yii::$app->user->identity->email . ')',
                 ['class' => 'btn btn-outline-secondary text-light nav-link']
             )
             . Html::endForm()
@@ -58,19 +57,17 @@ AppAsset::register($this);
     ?>
 </header>
 <main class="main ">
-
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </main>
-<footer class="footer mt-auto">
-    <div class="container">
-        <p class="float-left text-muted">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <?= Html::a('Contact', ['/site/contact'], ['class' => 'float-right']) ?>
+<footer class="footer p-0 mt-auto">
+    <div class="container pt-1">
+        <div class="d-flex align-items-center mt-2">
+            <p class="text-muted m-0">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+            <?= Html::a('Contact', ['/site/contact'], ['class' => 'ml-auto btn btn-outline-secondary']) ?>
+        </div>
     </div>
 </footer>
 <div id="particles-js"></div>

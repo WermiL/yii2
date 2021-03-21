@@ -28,38 +28,37 @@ class VerifyEmailCest
 
     public function checkEmptyToken(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup/verify-email', ['token' => '']);
+        $I->amOnRoute('user/sign-up/verify-email', ['token' => '']);
         $I->canSee('Bad Request', 'h1');
         $I->canSee('Verify email token cannot be blank.');
     }
 
     public function checkInvalidToken(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup/verify-email', ['token' => 'wrong_token']);
+        $I->amOnRoute('user/sign-up/verify-email', ['token' => 'wrong_token']);
         $I->canSee('Bad Request', 'h1');
         $I->canSee('Wrong verify email token.');
     }
 
     public function checkNoToken(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup/verify-email');
+        $I->amOnRoute('user/sign-up/verify-email');
         $I->canSee('Bad Request', 'h1');
         $I->canSee('Missing required parameters: token');
     }
 
     public function checkAlreadyActivatedToken(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup/verify-email', ['token' => 'already_used_token_1548675330']);
+        $I->amOnRoute('user/sign-up/verify-email', ['token' => 'already_used_token_1548675330']);
         $I->canSee('Bad Request', 'h1');
         $I->canSee('Wrong verify email token.');
     }
 
     public function checkSuccessVerification(FunctionalTester $I)
     {
-        $I->amOnRoute('user/signup/verify-email', ['token' => '4ch0qbfhvWwkcuWqjN8SWRq72SOw1KYT_1548675330']);
+        $I->amOnRoute('user/sign-up/verify-email', ['token' => '4ch0qbfhvWwkcuWqjN8SWRq72SOw1KYT_1548675330']);
         $I->canSee('Your email has been confirmed!');
-        $I->canSee('Test 1', 'h1');
-        $I->see('Logout (test@mail.com)', 'form button[type=submit]');
+        $I->see('Sign out (test@mail.com)', 'form button[type=submit]');
 
         $I->seeRecord(User::class, [
             'email' => 'test@mail.com',

@@ -26,41 +26,41 @@ class LoginCest
 
     public function _before(FunctionalTester $I)
     {
-        $I->amOnRoute('user/login');
+        $I->amOnRoute('user/sign-in');
     }
 
     protected function formParams($login, $password)
     {
         return [
-            'LoginForm[email]' => $login,
-            'LoginForm[password]' => $password,
+            'SignInForm[email]' => $login,
+            'SignInForm[password]' => $password,
         ];
     }
 
     public function checkEmpty(FunctionalTester $I)
     {
-        $I->submitForm('#login-form', $this->formParams('', ''));
+        $I->submitForm('#sign-in-form', $this->formParams('', ''));
         $I->seeValidationError('Email cannot be blank.');
         $I->seeValidationError('Password cannot be blank.');
     }
 
     public function checkWrongPassword(FunctionalTester $I)
     {
-        $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
+        $I->submitForm('#sign-in-form', $this->formParams('admin', 'wrong'));
         $I->seeValidationError('Incorrect email or password.');
     }
 
     public function checkInactiveAccount(FunctionalTester $I)
     {
-        $I->submitForm('#login-form', $this->formParams('test@mail.com', 'Test1234'));
+        $I->submitForm('#sign-in-form', $this->formParams('test@mail.com', 'Test1234'));
         $I->seeValidationError('Incorrect email or password');
     }
 
     public function checkValidLogin(FunctionalTester $I)
     {
-        $I->submitForm('#login-form', $this->formParams('sfriesen@jenkins.info', 'password_0'));
-        $I->see('Logout (sfriesen@jenkins.info)', 'form button[type=submit]');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');
+        $I->submitForm('#sign-in-form', $this->formParams('sfriesen@jenkins.info', 'password_0'));
+        $I->see('Sign out (sfriesen@jenkins.info)', 'form button[type=submit]');
+        $I->dontSeeLink('Sign in');
+        $I->dontSeeLink('Sign up');
     }
 }

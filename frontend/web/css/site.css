@@ -126,12 +126,5 @@ a.desc:after {
     bottom: 0;
     left: 0;
     right: 0;
-}
-
-.header {
-    z-index: 77;
-}
-
-.footer {
-    z-index: 77;
+    z-index: -77;
 }

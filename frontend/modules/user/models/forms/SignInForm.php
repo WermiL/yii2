@@ -14,7 +14,7 @@ use yii\base\Model;
  * @property bool $rememberMe
  * @property User|null $_user
  */
-class LoginForm extends Model
+class SignInForm extends Model
 {
     public $email;
     public $password;

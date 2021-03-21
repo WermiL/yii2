@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
         'frontend\assets\AdminLteAsset',
-        '\frontend\assets\ParticlesAsset'
+        'frontend\assets\ParticlesAsset',
+        '\frontend\assets\FontAwesomeAsset'
     ];
 }
