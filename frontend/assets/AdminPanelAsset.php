@@ -5,21 +5,21 @@ namespace frontend\assets;
 use yii\web\AssetBundle;
 
 /**
- * AdminLTE asset bundle.
+ * Main frontend application asset bundle.
  */
-class AdminLteAsset extends AssetBundle
+class AdminPanelAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/adminLte/AdminLTE.css',
-        'css/adminLte/skin-green.css',
+        'css/site.css',
     ];
     public $js = [
-        'js/adminlte.js',
     ];
     public $depends = [
-        'yii\web\JqueryAsset',
+        'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
+        'frontend\assets\parts\AdminLteAsset',
+        'frontend\assets\parts\FontAwesomeAsset'
     ];
 }

@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class MainAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -19,8 +19,8 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
-        'frontend\assets\AdminLteAsset',
-        'frontend\assets\ParticlesAsset',
-        '\frontend\assets\FontAwesomeAsset'
+        'frontend\assets\parts\AdminLteAsset',
+        'frontend\assets\parts\ParticlesAsset',
+        'frontend\assets\parts\FontAwesomeAsset'
     ];
 }

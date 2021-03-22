@@ -4,10 +4,10 @@
 
 /* @var $content string */
 
-use frontend\assets\AppAsset;
+use frontend\assets\MainAsset;
 use yii\helpers\Html;
 
-AppAsset::register($this);
+MainAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

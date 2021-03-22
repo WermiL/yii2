@@ -1,20 +1,19 @@
 <?php
 
-namespace frontend\assets;
+namespace frontend\assets\parts;
 
 use yii\web\AssetBundle;
 
 /**
- * Particles asset bundle.
+ * AdminLTE asset bundle.
  */
-class ParticlesAsset extends AssetBundle
+class FontAwesomeAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'fontAwesome/css/all.css',
     ];
-    public $js = [
-        'js/particles.js',
-    ];
+    public $js = [];
     public $depends = [];
 }
