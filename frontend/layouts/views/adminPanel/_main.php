@@ -4,11 +4,9 @@
 use frontend\widgets\Alert;
 
 ?>
-<div class="content-wrapper">
-    <section class="content">
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </section>
+<div class="content-wrapper pt-0 pb-2 px-2">
+    <?= $content ?>
+    <?= Alert::widget() ?>
 </div>
 
 
