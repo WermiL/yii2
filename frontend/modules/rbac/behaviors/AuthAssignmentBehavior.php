@@ -15,7 +15,7 @@ class AuthAssignmentBehavior extends Behavior
     public function events()
     {
         return [
-            ActiveRecord::EVENT_BEFORE_INSERT => 'insertingRole',
+            ActiveRecord::EVENT_AFTER_INSERT => 'insertingRole',
 //            ActiveRecord::EVENT_AFTER_UPDATE => 'updatingRole',
             ActiveRecord::EVENT_AFTER_DELETE => 'deletingRole',
         ];
