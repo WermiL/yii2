@@ -12,6 +12,7 @@ class SignupCest
 
     public function _before(FunctionalTester $I)
     {
+        \Yii::$app->authManager->removeAllAssignments();
         $I->amOnRoute('user/sign-up');
     }
 
@@ -51,5 +52,9 @@ class SignupCest
 
         $I->seeEmailIsSent();
         $I->see('Thank you for registration. Please check your inbox for verification email.');
+    }
+    public function signupFinishTest(FunctionalTester $I)
+    {
+        \Yii::$app->authManager->removeAllAssignments();
     }
 }

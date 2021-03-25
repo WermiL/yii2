@@ -5,8 +5,9 @@ use tests\fixtures\UserFixture;
 use frontend\modules\user\models\forms\SignupForm;
 use frontend\modules\user\models\records\user\User;
 use yii\mail\MessageInterface;
+use Codeception\Test\Unit;
 
-class SignupFormTest extends \Codeception\Test\Unit
+class SignupFormTest extends Unit
 {
     /**
      * @var \tests\UnitTester
@@ -16,6 +17,7 @@ class SignupFormTest extends \Codeception\Test\Unit
 
     public function _before()
     {
+        \Yii::$app->authManager->removeAllAssignments();
         $this->tester->haveFixtures([
             'user' => [
                 'class' => UserFixture::className(),
@@ -26,6 +28,7 @@ class SignupFormTest extends \Codeception\Test\Unit
 
     public function testCorrectSignup()
     {
+
         $model = new SignupForm([
             'email' => 'some_email@example.com',
             'password' => 'some_password',
@@ -34,7 +37,7 @@ class SignupFormTest extends \Codeception\Test\Unit
         $signup = $model->signup();
         expect($signup)->true();
 
-        /** @var \frontend\modules\user\models\records\User $user */
+        /** @var \frontend\modules\user\models\records\user\User $user */
         $user = $this->tester->grabRecord(User::class, [
             'email' => 'some_email@example.com',
             'status' => User::STATUS_INACTIVE
