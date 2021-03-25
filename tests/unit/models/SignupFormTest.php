@@ -1,16 +1,16 @@
 <?php
-namespace tests\unit\models;
+namespace app\tests\unit\models;
 
-use tests\fixtures\UserFixture;
-use frontend\modules\user\models\forms\SignupForm;
-use frontend\modules\user\models\records\user\User;
+use app\tests\fixtures\UserFixture;
+use app\modules\user\models\forms\SignupForm;
+use app\modules\user\models\records\user\User;
 use yii\mail\MessageInterface;
 use Codeception\Test\Unit;
 
 class SignupFormTest extends Unit
 {
     /**
-     * @var \tests\UnitTester
+     * @var \app\tests\UnitTester
      */
     protected $tester;
 
@@ -37,7 +37,7 @@ class SignupFormTest extends Unit
         $signup = $model->signup();
         expect($signup)->true();
 
-        /** @var \frontend\modules\user\models\records\user\User $user */
+        /** @var app\modules\user\models\records\user\User $user */
         $user = $this->tester->grabRecord(User::class, [
             'email' => 'some_email@example.com',
             'status' => User::STATUS_INACTIVE

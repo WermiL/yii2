@@ -1,8 +1,8 @@
 <?php
-namespace tests\fixtures;
+namespace app\tests\fixtures;
 
 
-use frontend\modules\user\models\records\user\User;
+use app\modules\user\models\records\user\User;
 use yii\test\ActiveFixture;
 
 

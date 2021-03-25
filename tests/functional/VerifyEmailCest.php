@@ -1,11 +1,11 @@
 <?php
 
-namespace tests\functional;
+namespace app\tests\functional;
 
 
-use frontend\modules\user\models\records\user\User;
-use tests\fixtures\UserFixture;
-use tests\FunctionalTester;
+use app\modules\user\models\records\user\User;
+use app\tests\fixtures\UserFixture;
+use app\tests\FunctionalTester;
 
 class VerifyEmailCest
 {

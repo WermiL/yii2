@@ -1,7 +1,7 @@
 <?php
-namespace tests\functional;
+namespace app\tests\functional;
 
-use tests\FunctionalTester;
+use app\tests\FunctionalTester;
 
 /* @var $scenario \Codeception\Scenario */
 

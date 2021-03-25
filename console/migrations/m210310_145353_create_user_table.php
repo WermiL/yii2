@@ -1,6 +1,6 @@
 <?php
 
-use frontend\modules\rbac\models\records\rbacAuthItem\RbacAuthItem;
+use app\modules\rbac\models\records\rbacAuthItem\RbacAuthItem;
 use yii\db\Migration;
 
 class m210310_145353_create_user_table extends Migration

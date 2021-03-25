@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-use frontend\modules\rbac\models\records\rbacAuthItem\RbacAuthItem;
+use app\modules\rbac\models\records\rbacAuthItem\RbacAuthItem;
 use yii\db\Migration;
 
 class m210310_185647_create_i18n_table extends Migration

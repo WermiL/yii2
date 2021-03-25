@@ -1,9 +1,9 @@
 <?php
 
-namespace tests\functional;
+namespace app\tests\functional;
 
-use tests\FunctionalTester;
-use frontend\modules\user\models\records\user\User;
+use app\tests\FunctionalTester;
+use app\modules\user\models\records\user\User;
 
 class SignupCest
 {

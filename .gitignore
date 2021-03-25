@@ -5,4 +5,4 @@
 /vendor
 
 # ignore assets
-/frontend/web/assets
+/web/assets

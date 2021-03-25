@@ -1,0 +1,107 @@
+<?php
+
+namespace app\modules\user\models\records\user;
+use Yii;
+
+/**
+ * This is the model class for table "user".
+ *
+ * @property int $id
+ * @property string $email
+ * @property string $nickname
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $auth_key
+ * @property string|null $verification_token
+ * @property string $password_hash
+ * @property string|null $password_reset_token
+ * @property int $status
+ * @property int $created_at
+ * @property int $updated_at
+ */
+class UserValidation extends \yii\db\ActiveRecord
+{
+    const STATUS_DELETED = 0;
+    const STATUS_INACTIVE = 9;
+    const STATUS_ACTIVE = 10;
+    const PASSWORD_RESET_TOKEN_EXPIRE = 3600;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'email' => Yii::t('user', 'Email'),
+            'nickname' => Yii::t('user', 'Nickname'),
+            'first_name' => Yii::t('user', 'First Name'),
+            'last_name' => Yii::t('user', 'Last Name'),
+            'auth_key' => Yii::t('user', 'Auth Key'),
+            'verification_token' => Yii::t('user', 'Verification Token'),
+            'password_hash' => Yii::t('user', 'Password Hash'),
+            'password_reset_token' => Yii::t('user', 'Password Reset Token'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['email', 'auth_key', 'password_hash'], 'required'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['email', 'nickname', 'first_name', 'last_name', 'verification_token', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['email', 'nickname', 'password_reset_token'], 'unique'],
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            [['nickname', 'first_name', 'last_name', 'verification_token', 'password_reset_token'], 'trim'],
+            [['nickname', 'first_name', 'last_name', 'verification_token', 'password_reset_token'], 'filter',
+                'filter' => function ($value) {
+                    return ($value === '') ? null : $value;
+                }],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return '{{%user}}';
+    }
+
+    /**
+     * Finds out if password reset token is valid
+     *
+     * @param string $token password reset token
+     * @return bool
+     */
+    public static function isPasswordResetTokenValid($token)
+    {
+        if (empty($token)) {
+            return false;
+        }
+
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
+        $expire = User::PASSWORD_RESET_TOKEN_EXPIRE;
+        return $timestamp + $expire >= time();
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
+}

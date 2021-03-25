@@ -9,24 +9,16 @@ DIRECTORY STRUCTURE
 -------------------
 
 ```
-common
-    config              contains shared configurations
-    mail                contains view files for e-mails
-console
-    config              contains console configurations
-    controllers         contains console controllers (commands)
-    migrations          contains database migrations
-    models              contains console-specific model classes
-    runtime             contains files generated during runtime
-frontend
-    assets              contains application assets such as JavaScript and CSS
-    config              contains frontend configurations
-    controllers         contains Web controller classes
-    models              contains frontend-specific model classes
-    runtime             contains files generated during runtime
-    views               contains view files for the Web application
-    web                 contains the entry script and Web resources
-    widgets             contains frontend widgets
+mail                contains view files for e-mails
+migrations          contains database migrations
+assets              contains application assets such as JavaScript and CSS
+config              contains configurations
+controllers         contains Web controller classes
+models              contains specific model classes
+runtime             contains files generated during runtime
+views               contains view files for the Web application
+web                 contains the entry script and Web resources
+widgets             contains widgets
 tests                   contains tests for application    
 vendor                  contains dependent 3rd-party packages
 ```

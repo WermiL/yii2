@@ -1,17 +1,17 @@
 <?php
 
-namespace tests\unit\models;
+namespace app\tests\unit\models;
 
 
 use Codeception\Test\Unit;
-use tests\fixtures\UserFixture;
-use frontend\modules\user\models\forms\ResendVerificationEmailForm;
+use app\tests\fixtures\UserFixture;
+use app\modules\user\models\forms\ResendVerificationEmailForm;
 use yii\mail\MessageInterface;
 
 class ResendVerificationEmailFormTest extends Unit
 {
     /**
-     * @var \tests\UnitTester
+     * @var \app\tests\UnitTester
      */
     protected $tester;
 

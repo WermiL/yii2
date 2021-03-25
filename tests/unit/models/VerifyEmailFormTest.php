@@ -1,16 +1,16 @@
 <?php
 
-namespace tests\unit\models;
+namespace app\tests\unit\models;
 
-use tests\fixtures\UserFixture;
-use frontend\modules\user\models\forms\VerifyEmailForm;
-use frontend\modules\user\models\records\user\User;
+use app\tests\fixtures\UserFixture;
+use app\modules\user\models\forms\VerifyEmailForm;
+use app\modules\user\models\records\user\User;
 use yii\base\InvalidArgumentException;
 
 class VerifyEmailFormTest extends \Codeception\Test\Unit
 {
     /**
-     * @var \tests\UnitTester
+     * @var \app\tests\UnitTester
      */
     protected $tester;
 

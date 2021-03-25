@@ -1,10 +1,10 @@
 <?php
 
-namespace tests\functional;
+namespace app\tests\functional;
 
-use tests\fixtures\UserFixture;
-use tests\FunctionalTester;
-use frontend\modules\user\models\records\user\User;
+use app\tests\fixtures\UserFixture;
+use app\tests\FunctionalTester;
+use app\modules\user\models\records\user\User;
 
 class ResendVerificationEmailCest
 {

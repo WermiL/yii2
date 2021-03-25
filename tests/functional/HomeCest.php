@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\functional;
+namespace app\tests\functional;
 
-use tests\FunctionalTester;
+use app\tests\FunctionalTester;
 
 class HomeCest
 {

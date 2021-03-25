@@ -1,4 +1,4 @@
-suite_namespace: tests\functional
+suite_namespace: app\tests\functional
 actor: FunctionalTester
 modules:
     enabled:

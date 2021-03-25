@@ -1,11 +1,11 @@
-namespace: tests
+namespace: app\tests
 actor_suffix: Tester
 paths:
     tests: tests
     output: tests/_output
     data: tests/_data
     support: tests/_support
-    log: console/runtime/logs
+    log: runtime/logs
 bootstrap: _bootstrap.php
 settings:
     colors: true
@@ -13,4 +13,4 @@ settings:
 modules:
     config:
         Yii2:
-            configFile: 'frontend/config/codeception-local.php'
+            configFile: 'config/codeception-local.php'
