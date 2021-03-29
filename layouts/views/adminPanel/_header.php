@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use \yii\helpers\Html;
 ?>
 
 <header class="main-header">
@@ -11,6 +12,18 @@ use yii\helpers\Url;
         <a href="#" class="sidebar-toggle fas fa-bars" data-toggle="push-menu" role="button">
         </a>
         <div class="navbar-custom-menu">
+            <?= Html::a('RU', \yii\helpers\Url::to('/i18n/language'), ['class' => ' dropdown-item', 'data-method' => 'POST',
+                'data-params' => [
+                    'language' => 'ru_RU',
+                    'url' => \yii\helpers\Url::current()
+                ],]) ?>
+            <?=
+            Html::a('EN', \yii\helpers\Url::to('/i18n/language'), ['class' => 'dropdown-item', 'data-method' => 'POST',
+                'data-params' => [
+                    'language' => 'en_US',
+                    'url' => \yii\helpers\Url::current()
+                ],])
+            ?>
         </div>
     </nav>
 </header>

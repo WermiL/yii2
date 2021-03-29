@@ -3,12 +3,12 @@
 namespace app\modules\user\controllers;
 
 use app\layouts\controller\LayoutController;
-use Yii;
 use app\modules\user\models\records\user\User;
 use app\modules\user\models\search\UserAdministrationSearch;
+use Yii;
 use yii\filters\AccessControl;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * AdministrationController implements the CRUD actions for User model.
@@ -31,7 +31,7 @@ class AdministrationController extends LayoutController
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','view'],
+                        'actions' => ['index', 'view'],
                         'permissions' => ['user/view'],
                     ],
                     [

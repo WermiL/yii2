@@ -2,6 +2,8 @@
 
 namespace app\layouts\controller;
 
+use app\modules\i18n\models\forms\LanguageSelectionForm;
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -19,4 +21,11 @@ class LayoutController extends Controller
      * {@inheritdoc}
      */
     public $layout = self::LAYOUT_MAIN;
+
+    public function init()
+    {
+        Yii::$app->language = LanguageSelectionForm::getLanguage();
+        parent::init();
+    }
+
 }

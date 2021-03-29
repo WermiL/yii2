@@ -5,6 +5,7 @@ $basePath = dirname(__DIR__);
 $config = [
     'name' => 'Yii App',
     'language' => 'en-US',
+    'sourceLanguage' => 'en-US',
     'aliases' => [
         '@app' => $basePath,
         '@bower' => '@vendor/bower-asset',
@@ -66,18 +67,18 @@ $config = [
             'ruleTable' => 'rbac_auth_rule',
         ],
         'request' => [
-            'csrfParam' => '_csrf-app',
+            'csrfParam' => 'request-validation',
             'cookieValidationKey' => 'P_mpw4mfp9JBAhC9cAPx1nsv4yawcBNO',
         ],
         'user' => [
             'identityClass' => app\modules\user\models\records\user\UserIdentity::class,
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-app', 'httpOnly' => true],
+            'identityCookie' => ['name' => 'user-identity', 'httpOnly' => true],
             'loginUrl' => ['/user/sign-in'],
         ],
         'session' => [
             'class' => yii\redis\Session::class,
-            'name' => 'advanced-app',
+            'name' => 'session-key',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

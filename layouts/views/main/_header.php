@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\i18n\models\forms\LanguageSelectionForm;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
@@ -12,6 +13,25 @@ NavBar::begin([
     ],
 ]);
 $menuItems = [];
+
+$menuItems[] =
+    '<li class="dropdown nav-item">' .
+    '<a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">'.  LanguageSelectionForm::getLanguage() .'</a>' .
+    '<div id="w2" class="dropdown-menu">' .
+    Html::a('RU', \yii\helpers\Url::to('/i18n/language'), ['class' => ' dropdown-item', 'data-method' => 'POST',
+        'data-params' => [
+            'language' => 'ru_RU',
+            'url' => \yii\helpers\Url::current()
+        ],]) .
+    Html::a('EN', \yii\helpers\Url::to('/i18n/language'), ['class' => 'dropdown-item', 'data-method' => 'POST',
+        'data-params' => [
+            'language' => 'en_US',
+            'url' => \yii\helpers\Url::current()
+        ],]) .
+    '</div>' .
+    '</li>';
+
+
 if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => Yii::t('user', 'Sign in'), 'url' => ['/user/sign-in'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light ml-auto']];
     $menuItems[] = ['label' => Yii::t('user', 'Sign up'), 'url' => ['/user/sign-up'], 'linkOptions' => ['class' => 'btn btn-outline-secondary text-light']];
